@@ -1,0 +1,22 @@
+{% extends 'academia/base.html' %}
+{% block titulo %}Consulta validada | ASTRAEA{% endblock %}
+{% block contenido %}
+
+<section class="container section">
+  <div class="form-card success-card">
+    <div class="success-icon">✦</div>
+
+    <h1>Consulta validada</h1>
+
+    <p>
+      Gracias, {{ nombre }}. Tu consulta sobre "{{ asunto }}" superó las
+      validaciones.
+    </p>
+
+    <p>Esta demostración todavía no guarda ni envía mensajes.</p>
+
+    <a class="btn" href="{% url 'academia:inicio' %}"> Volver al inicio </a>
+  </div>
+</section>
+
+{% endblock %}

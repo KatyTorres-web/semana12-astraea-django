@@ -1,0 +1,30 @@
+{% extends 'academia/base.html' %}
+{% block titulo %}Consultas | ASTRAEA{% endblock %}
+{% block contenido %}
+
+<section class="page-heading">
+  <div class="container">
+    <span class="eyebrow">CONTACT THE ACADEMY</span>
+    <h1>Consultas celestiales</h1>
+    <p>Completa el formulario para practicar el envío de datos.</p>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="form-card">
+    <h2>Envíanos tu consulta</h2>
+
+    <form method="post" action="{% url 'academia:consulta' %}">
+      {% csrf_token %} {{ form.non_field_errors }} {{ form.as_p }}
+
+      <button class="btn" type="submit">Validar consulta ✨</button>
+    </form>
+
+    <p class="form-note">
+      En esta fase las consultas se validan, pero todavía no se almacenan ni se
+      envían.
+    </p>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'academia/base.html' %}
+{% block titulo %}Inicio | ASTRAEA{% endblock %}
+{% block contenido %}
+
+<section class="hero">
+  <div class="container hero-content">
+    <span class="eyebrow"> ✦ CELESTIAL ACADEMY ✦ </span>
+
+    <h1>
+      Tu destino está
+      <span>escrito en las estrellas</span>
+    </h1>
+
+    <p>
+      Bienvenido a ASTRAEA, una academia donde la magia, la ciencia y el
+      universo se encuentran.
+    </p>
+
+    <div class="actions">
+      <a class="btn" href="{% url 'academia:cursos' %}"> Explorar cursos </a>
+
+      <a class="btn btn-outline" href="{% url 'academia:inscripcion' %}">
+        Solicitar inscripción
+      </a>
+    </div>
+
+    <p class="counter">✨ {{ total_cursos }} cursos disponibles</p>
+  </div>
+</section>
+
+<section class="container section">
+  <h2>Descubre tu camino mágico</h2>
+
+  <div class="feature-grid">
+    <article class="feature-card">
+      <span>🌙</span>
+      <h3>Aprendizaje celestial</h3>
+      <p>Explora los misterios de las estrellas.</p>
+    </article>
+
+    <article class="feature-card">
+      <span>🔮</span>
+      <h3>Conocimiento arcano</h3>
+      <p>Descubre nuevas disciplinas mágicas.</p>
+    </article>
+
+    <article class="feature-card">
+      <span>✨</span>
+      <h3>Tu propia aventura</h3>
+      <p>Solicita tu ingreso a la academia.</p>
+    </article>
+  </div>
+</section>
+
+{% endblock %}

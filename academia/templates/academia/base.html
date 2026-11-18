@@ -1,0 +1,59 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block titulo %}ASTRAEA Academy{% endblock %}
+    </title>
+
+    <link rel="stylesheet"
+          href="{% static 'academia/css/styles.css' %}">
+</head>
+<body>
+
+<header class="header">
+    <nav class="container navbar"
+         aria-label="Navegación principal">
+
+        <a class="brand"
+           href="{% url 'academia:inicio' %}">
+            ✦ ASTRAEA
+        </a>
+
+        <div class="nav-links">
+            <a href="{% url 'academia:inicio' %}">Inicio</a>
+            <a href="{% url 'academia:cursos' %}">Cursos</a>
+            <a href="{% url 'academia:inscripcion' %}">
+                Inscripción
+            </a>
+            <a href="{% url 'academia:consulta' %}">
+                Consultas
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    {% if messages %}
+        <div class="container messages">
+            {% for message in messages %}
+                <p class="alert">{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% block contenido %}{% endblock %}
+</main>
+
+<footer class="footer">
+    <p>✧ ASTRAEA — Academia de Magia Celestial ✧</p>
+    <p>Proyecto académico desarrollado con Django 5.x</p>
+</footer>
+
+</body>
+</html>

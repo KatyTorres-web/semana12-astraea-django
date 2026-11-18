@@ -1,0 +1,22 @@
+{% extends 'academia/base.html' %}
+{% block titulo %}Solicitud registrada | ASTRAEA{% endblock %}
+{% block contenido %}
+
+<section class="container section">
+  <div class="form-card success-card">
+    <div class="success-icon">✧</div>
+
+    <h1>¡Solicitud registrada!</h1>
+
+    <p>Tu solicitud de ingreso a ASTRAEA fue almacenada correctamente.</p>
+
+    <p>
+      Su estado inicial es pendiente. La aprobación se implementará en las
+      siguientes fases.
+    </p>
+
+    <a class="btn" href="{% url 'academia:cursos' %}"> Explorar cursos </a>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'academia/base.html' %}
+{% block titulo %}Cursos | ASTRAEA{% endblock %}
+{% block contenido %}
+
+<section class="page-heading">
+  <div class="container">
+    <span class="eyebrow">EXPLORE YOUR PATH</span>
+    <h1>✦ Cursos de la Academia</h1>
+    <p>Descubre las disciplinas del universo celestial.</p>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="course-grid">
+    {% for curso in cursos %}
+    <article class="course-card">
+      <span class="course-icon">✧</span>
+
+      <p class="eyebrow">{{ curso.codigo }}</p>
+
+      <h2>{{ curso.nombre }}</h2>
+
+      <p>{{ curso.descripcion }}</p>
+
+      <div class="course-bottom">
+        <span>Cupos: {{ curso.cupos }}</span>
+
+        <a class="btn" href="{% url 'academia:inscripcion' %}"> Inscribirme </a>
+      </div>
+    </article>
+    {% empty %}
+    <p>No hay cursos disponibles actualmente.</p>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}
