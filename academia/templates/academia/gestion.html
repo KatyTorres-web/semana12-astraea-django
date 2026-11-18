@@ -1,0 +1,20 @@
+{% extends 'academia/base.html' %}
+
+{% block titulo %}Gestión | ASTRAEA{% endblock %}
+
+{% block contenido %}
+<section class="container section">
+    <h1>✦ Gestión de inscripciones</h1>
+
+    {% for solicitud in inscripciones %}
+        <article class="course-card">
+            <h2>{{ solicitud.nombre_estudiante }}</h2>
+            <p>Curso: {{ solicitud.curso.nombre }}</p>
+            <p>Correo: {{ solicitud.correo }}</p>
+            <p>Estado: {{ solicitud.get_estado_display }}</p>
+        </article>
+    {% empty %}
+        <p>No hay solicitudes registradas.</p>
+    {% endfor %}
+</section>
+{% endblock %}

@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.views.decorators.http import require_http_methods
+from django.views.generic import ListView
 
-from .forms import ConsultaForm, InscripcionForm
-from .models import Curso
+from .forms import ConsultaForm, InscripcionForm, RegistroUsuarioForm
+from .models import Curso, Inscripcion
 
 
 # Página de inicio
@@ -97,3 +100,44 @@ def inscripcion_exitosa(request):
         request,
         'academia/inscripcion_exitosa.html'
     )
+
+
+# Registro de usuarios
+def registro(request):
+    if request.user.is_authenticated:
+        return redirect('academia:dashboard')
+
+    if request.method == 'POST':
+        form = RegistroUsuarioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request,
+                'Cuenta creada. Ahora puedes iniciar sesión.'
+            )
+            return redirect('academia:login')
+    else:
+        form = RegistroUsuarioForm()
+
+    return render(
+        request,
+        'academia/registro.html',
+        {'form': form}
+    )
+
+
+# Portal privado
+@login_required
+def dashboard(request):
+    return render(
+        request,
+        'academia/dashboard.html',
+        {'titulo': 'Mi portal celestial'}
+    )
+
+
+class GestionInscripcionesView(PermissionRequiredMixin, ListView):
+    model = Inscripcion
+    template_name = 'academia/gestion.html'
+    context_object_name = 'inscripciones'
+    permission_required = 'academia.view_inscripcion'

@@ -1,0 +1,23 @@
+{% extends 'academia/base.html' %}
+
+{% block titulo %}Mi portal | ASTRAEA{% endblock %}
+
+{% block contenido %}
+<section class="container section">
+    <div class="form-card success-card">
+        <h1>✨ {{ titulo }}</h1>
+
+        <h2>Bienvenido, {{ user.username }}</h2>
+
+        <p>
+            Tu sesión está activa.
+            Bienvenido a la Academia Celestial.
+        </p>
+
+        <a class="btn"
+           href="{% url 'academia:cursos' %}">
+            Explorar cursos
+        </a>
+    </div>
+</section>
+{% endblock %}

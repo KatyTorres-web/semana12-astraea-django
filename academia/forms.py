@@ -1,5 +1,6 @@
 
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 
 from .models import Curso, Inscripcion
 from .validators import (
@@ -7,6 +8,10 @@ from .validators import (
     validar_nombre,
     validar_codigo_estudiante,
 )
+
+
+class RegistroUsuarioForm(UserCreationForm):
+    pass
 
 
 # Formulario clásico

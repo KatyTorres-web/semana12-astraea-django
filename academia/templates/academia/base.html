@@ -34,6 +34,38 @@
             <a href="{% url 'academia:consulta' %}">
                 Consultas
             </a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'academia:dashboard' %}">
+                    Mi portal
+                </a>
+
+                {% if perms.academia.view_inscripcion %}
+                    <a href="{% url 'academia:gestion' %}">
+                        Gestión
+                    </a>
+                {% endif %}
+
+                {% if user.is_staff %}
+                    <a href="{% url 'admin:index' %}">
+                        Admin
+                    </a>
+                {% endif %}
+
+                <form method="post"
+                      action="{% url 'academia:logout' %}"
+                      class="logout-form">
+                    {% csrf_token %}
+                    <button type="submit">Cerrar sesión</button>
+                </form>
+            {% else %}
+                <a href="{% url 'academia:registro' %}">
+                    Registrarse
+                </a>
+
+                <a href="{% url 'academia:login' %}">
+                    Iniciar sesión
+                </a>
+            {% endif %}
         </div>
     </nav>
 </header>
