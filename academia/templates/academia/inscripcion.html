@@ -17,7 +17,31 @@
     <p>Completa tus datos para solicitar una plaza en nuestra academia.</p>
 
     <form method="post" action="{% url 'academia:inscripcion' %}">
-      {% csrf_token %} {{ form.non_field_errors }} {{ form.as_p }}
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="form-errors">
+          <strong>Errores generales:</strong>
+          {{ form.non_field_errors }}
+        </div>
+      {% endif %}
+
+      {% for campo in form %}
+        <div class="form-field">
+          {{ campo.label_tag }}
+          {{ campo }}
+
+          {% if campo.help_text %}
+            <small>{{ campo.help_text }}</small>
+          {% endif %}
+
+          {% if campo.errors %}
+            <div class="field-errors">
+              {{ campo.errors }}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
 
       <button type="submit" class="btn">Registrar solicitud ✨</button>
     </form>

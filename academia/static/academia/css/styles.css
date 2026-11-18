@@ -265,8 +265,27 @@ a {
   outline-offset: 1px;
 }
 
-.errorlist {
+.form-field {
+  margin-bottom: 22px;
+}
+
+.form-field small {
+  display: block;
+  margin-top: 6px;
+  color: #75748c;
+}
+
+.form-errors,
+.field-errors {
   color: #a72b55;
+  background: #fff0f4;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.errorlist {
+  margin: 0;
   padding-left: 20px;
 }
 
